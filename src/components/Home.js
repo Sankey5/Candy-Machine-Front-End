@@ -38,7 +38,7 @@ const defaultCM = {
   endSettings: null,
   whitelistMintSettings: null,
   hiddenSettings: null,
-  storage: "arweave-sol",
+  storage: "arweave",
   ipfsInfuraProjectId: null,
   ipfsInfuraSecret: null,
   nftStorageKey: null,
@@ -47,7 +47,8 @@ const defaultCM = {
   noMutable: false,
 };
 
-const URL = "http://127.0.0.1:3001/cm";
+const URL = process.env.REACT_APP_API_URL;
+//const URL = "http://127.0.0.1:3001/cm";
 
 const Home = () => {
   //States
@@ -85,6 +86,7 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("CM on submit: ", JSON.stringify(cm, null, 2));
+    console.log("API URL: ", URL);
     // Send the data to the backend
     const response = await fetch(URL, {
       method: "post",
